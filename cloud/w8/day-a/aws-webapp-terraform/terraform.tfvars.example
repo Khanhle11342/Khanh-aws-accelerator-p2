@@ -1,0 +1,6 @@
+region         = "ap-southeast-2"
+instance_type  = "t3.micro"
+db_username    = "admin"
+db_password    = "ChangeThisPassword123!"
+bucket_name    = "your-unique-static-assets-bucket-name"
+ssh_cidr_block = "YOUR_PUBLIC_IP/32"
