@@ -1,0 +1,12 @@
+.git
+.github
+.terraform
+argocd
+generated
+gitops
+scripts
+*.tf
+*.tfstate
+*.tfstate.backup
+*.pem
+README.md

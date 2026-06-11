@@ -9,8 +9,8 @@ spec:
 
   source:
     repoURL: https://github.com/Khanhle11342/Khanh-aws-accelerator-p2.git
-    targetRevision: deploy-mymymy-web
-    path: cloud/w9/lab/gitops
+    targetRevision: main
+    path: gitops/apps/web
 
   destination:
     server: https://kubernetes.default.svc
@@ -20,3 +20,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
