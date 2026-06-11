@@ -35,7 +35,8 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:1.27
+        image: mymymy-web:v1
+        imagePullPolicy: IfNotPresent
 
         envFrom:
         - configMapRef:
