@@ -20,10 +20,10 @@ spec:
   receivers:
     - name: personal-email
       emailConfigs:
-        - to: your-email@gmail.com
-          from: your-email@gmail.com
+        - to: khanhle11342@gmail.com
+          from: khanhle11342@gmail.com
           smarthost: smtp.gmail.com:587
-          authUsername: your-email@gmail.com
+          authUsername: khanhle11342@gmail.com
           authPassword:
             name: alertmanager-smtp
             key: password
