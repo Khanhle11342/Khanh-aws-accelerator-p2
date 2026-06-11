@@ -1,0 +1,7 @@
+resources:
+  - rollout.yaml
+  - service.yaml
+  - servicemonitor.yaml
+  - analysis-template.yaml
+  - prometheus-rule.yaml
+  - alertmanagerconfig.yaml
