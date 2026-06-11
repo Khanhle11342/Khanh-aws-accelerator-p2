@@ -1,0 +1,27 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: api-slo
+  namespace: demo
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: api-slo
+      rules:
+        - alert: ApiHighErrorRate
+          expr: |
+            (
+              1 -
+              (
+                sum(rate(flask_http_request_total{namespace="demo",job="api",status!~"5.."}[1m]))
+                /
+                sum(rate(flask_http_request_total{namespace="demo",job="api"}[1m]))
+              )
+            ) > 0.05
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: API error rate is above 5%
+            description: The demo/api service has a success rate below 95% for more than 1 minute.
