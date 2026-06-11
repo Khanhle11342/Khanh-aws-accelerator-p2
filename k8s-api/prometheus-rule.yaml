@@ -21,6 +21,7 @@ spec:
             ) > 0.05
           for: 1m
           labels:
+            namespace: demo
             severity: warning
           annotations:
             summary: API error rate is above 5%
