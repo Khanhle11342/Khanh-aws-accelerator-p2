@@ -1,6 +1,10 @@
 name: validate
 
 on:
+  push:
+    paths:
+      - "cloud/w9/lab/gitops/**"
+
   pull_request:
     paths:
       - "cloud/w9/lab/gitops/**"
