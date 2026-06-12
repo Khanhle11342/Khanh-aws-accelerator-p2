@@ -53,16 +53,8 @@ git log --oneline -8
 
 Output đã ghi nhận:
 
-```text
-06f7238 Revert "test api v4 rollout"
-e23c570 ci: update web image to c3f388f
-c3f388f test api v4 rollout
-f00dcc4 ci: update web image to 237ab81
-237ab81 modularize gitops apps
-ab60e5b ci: update web image to 3e11282
-3e11282 route api alerts to email
-e5e848e ci: update web image to c3de8ae
-```
+<img width="861" height="215" alt="image" src="https://github.com/user-attachments/assets/effeed96-5170-4074-9cf3-ffc55c27d61e" />
+
 
 Trạng thái sau rollback:
 
@@ -74,19 +66,8 @@ kubectl -n demo get pods -l app=api
 
 Output đã ghi nhận:
 
-```text
-NAME   SYNC STATUS   HEALTH STATUS
-api    Synced        Healthy
+<img width="908" height="496" alt="image" src="https://github.com/user-attachments/assets/b102c889-780a-4c0e-8ed8-0d6e4642f3da" />
 
-NAME   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-api    4         4         4            4           105m
-
-NAME                  READY   STATUS    RESTARTS   AGE
-api-6c9cc6f96-86hsw   1/1     Running   0          107s
-api-6c9cc6f96-98xcx   1/1     Running   0          66s
-api-6c9cc6f96-rqr9x   1/1     Running   0          2m18s
-api-6c9cc6f96-vs8nd   1/1     Running   0          66s
-```
 
 Kết luận: rollback được thực hiện bằng `git revert`, sau đó ArgoCD tự sync và đưa API về `Synced Healthy`.
 
