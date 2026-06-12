@@ -145,9 +145,7 @@ SMTP: smtp.gmail.com:587
 
 Bằng chứng email:
 
-```text
-[FIRING:1] EmailTestAlert demo
-```
+<img width="1517" height="207" alt="image" src="https://github.com/user-attachments/assets/92d247d1-d9f6-4f7e-b1ad-d5d6d3f54e21" />
 
 Điểm quan trọng đã sửa:
 
