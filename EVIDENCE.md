@@ -31,14 +31,8 @@ kubectl -n argocd get applications
 
 Output đã ghi nhận:
 
-```text
-NAME                    SYNC STATUS   HEALTH STATUS
-api                     Synced        Healthy
-argo-rollouts           Synced        Healthy
-kube-prometheus-stack   Synced        Healthy
-root                    Synced        Healthy
-web                     Synced        Healthy
-```
+<img width="790" height="193" alt="image" src="https://github.com/user-attachments/assets/b0f93815-d66f-4ba1-b6c4-7a44afe85069" />
+
 
 Đường dẫn module của app:
 
@@ -106,19 +100,8 @@ kubectl -n demo get analysistemplate,prometheusrule,alertmanagerconfig,servicemo
 
 Output đã ghi nhận:
 
-```text
-NAME                                            AGE
-analysistemplate.argoproj.io/api-success-rate   78m
+<img width="1025" height="342" alt="image" src="https://github.com/user-attachments/assets/5fbcbe05-cdab-44f5-a908-879a4769a078" />
 
-NAME                                           AGE
-prometheusrule.monitoring.coreos.com/api-slo   78m
-
-NAME                                                        AGE
-alertmanagerconfig.monitoring.coreos.com/api-email-alerts   64m
-
-NAME                                       AGE
-servicemonitor.monitoring.coreos.com/api   106m
-```
 
 Prometheus đã load rule:
 
@@ -129,10 +112,8 @@ kubectl -n monitoring exec prometheus-kube-prometheus-stack-prometheus-0 -c prom
 
 Output đã ghi nhận:
 
-```text
-ApiHighErrorRate
-api-slo
-```
+<img width="963" height="148" alt="image" src="https://github.com/user-attachments/assets/8409b83f-6666-46cb-86ad-2f34bb2049cf" />
+
 
 Route của Alertmanager:
 
