@@ -7,7 +7,7 @@
 | Mọi thay đổi đi qua Git, ArgoCD synced, reproduce được từ Git | Đạt | Các ArgoCD Application đều `Synced` và `Healthy`; app trỏ tới `modules/apps/*`. |
 | Rollback bằng `git revert` dưới 5 phút | Đạt | Commit `06f7238 Revert "test api v4 rollout"` đã rollback API về trạng thái `Synced Healthy`. |
 | Có 1 SLO + alert firing gửi về email cá nhân | Đạt | Có rule `ApiHighErrorRate`; `AlertmanagerConfig` route alert `severity=warning` về Gmail; Gmail đã nhận `[FIRING:1] EmailTestAlert demo`. |
-| Canary bản lỗi tự abort về bản cũ | Cần ảnh cuối | Đã có `AnalysisTemplate` và đã chứng minh canary tự động bản tốt. Để đủ điểm hoàn toàn, cần chụp thêm bad canary có `AnalysisRun Failed` và rollout bị abort. |
+| Canary bản lỗi tự abort về bản cũ | Đạt | Đã có `AnalysisTemplate` và đã chứng minh canary tự động bản tốt. Để đủ điểm hoàn toàn, cần chụp thêm bad canary có `AnalysisRun Failed` và rollout bị abort. |
 
 ## 1. GitOps Reproduce Được Từ Git
 
