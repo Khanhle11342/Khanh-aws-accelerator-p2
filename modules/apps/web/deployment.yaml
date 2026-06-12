@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: docker.io/khanh15/web:b4824e3
+          image: docker.io/khanh15/web:5bd6efd
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
