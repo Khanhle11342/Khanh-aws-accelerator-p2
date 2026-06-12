@@ -131,26 +131,13 @@ modules/apps/api/prometheus-rule.yaml
 
 Rollout đang dùng các bước:
 
-```yaml
-strategy:
-  canary:
-    steps:
-      - setWeight: 25
-      - analysis:
-          templates:
-            - templateName: api-success-rate
-      - setWeight: 50
-      - analysis:
-          templates:
-            - templateName: api-success-rate
-      - setWeight: 100
-```
+<img width="1031" height="806" alt="image" src="https://github.com/user-attachments/assets/f69de00b-4273-4d1b-acda-37031c33da38" />
+
 
 Analysis query Prometheus và yêu cầu success rate >= 95%:
 
-```yaml
-successCondition: result[0] >= 0.95
-```
+<img width="940" height="619" alt="image" src="https://github.com/user-attachments/assets/cd2fc839-442f-4012-b82c-0cf9b4ddb2da" />
+
 
 Bằng chứng đã có cho canary tự động bản tốt:
 
@@ -183,12 +170,8 @@ kubectl -n demo describe rollout api
 
 Kỳ vọng:
 
-```text
-AnalysisRun Failed
-Rollout Degraded hoặc Aborted
-stable ReplicaSet vẫn available
-bad version không lên 100%
-```
+<img width="899" height="616" alt="image" src="https://github.com/user-attachments/assets/93d6f984-9507-40ec-afce-ee7e967e42e4" />
+
 
 Rollback sau bad canary:
 
@@ -203,12 +186,10 @@ Sau đó chụp:
 kubectl -n argocd get app api
 kubectl -n demo get rollout api -o wide
 kubectl -n demo get pods -l app=api
+kubectl -n demo get rollout api -o yaml | grep -A8 "name: ERROR_RATE"
 ```
 
 Kỳ vọng:
 
-```text
-api Synced Healthy
-api AVAILABLE 4
-pods Running
-```
+<img width="930" height="525" alt="image" src="https://github.com/user-attachments/assets/61b62a56-353f-494a-a1b4-87995e6c8608" />
+
