@@ -41,10 +41,21 @@ spec:
               value: "0"
             - name: VERSION
               value: "v3"
+            - name: DB_SECRET_FILE
+              value: /var/run/app-secrets/db_pass
+          volumeMounts:
+            - name: db-credentials
+              mountPath: /var/run/app-secrets
+              readOnly: true
           readinessProbe:
             httpGet:
               path: /healthz
               port: 8080
+      volumes:
+        - name: db-credentials
+          secret:
+            secretName: api-db-credentials
+            optional: true
   strategy:
     canary:
       steps:
