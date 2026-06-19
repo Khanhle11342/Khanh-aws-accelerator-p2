@@ -1,0 +1,89 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDisallowedTags
+metadata:
+  name: disallow-latest-tag
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces: ["argocd", "gatekeeper-system", "kube-system", "monitoring", "argo-rollouts"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "StatefulSet", "DaemonSet"]
+      - apiGroups: ["argoproj.io"]
+        kinds: ["Rollout"]
+  parameters:
+    tags: ["latest"]
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredResources
+metadata:
+  name: require-container-limits
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces: ["argocd", "gatekeeper-system", "kube-system", "monitoring", "argo-rollouts"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "StatefulSet", "DaemonSet"]
+      - apiGroups: ["argoproj.io"]
+        kinds: ["Rollout"]
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sForbiddenRootUser
+metadata:
+  name: disallow-runasuser-zero
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces: ["argocd", "gatekeeper-system", "kube-system", "monitoring", "argo-rollouts"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "StatefulSet", "DaemonSet"]
+      - apiGroups: ["argoproj.io"]
+        kinds: ["Rollout"]
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sForbiddenHostNetwork
+metadata:
+  name: disallow-host-network
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces: ["argocd", "gatekeeper-system", "kube-system", "monitoring", "argo-rollouts"]
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+      - apiGroups: ["apps"]
+        kinds: ["Deployment", "StatefulSet", "DaemonSet"]
+      - apiGroups: ["argoproj.io"]
+        kinds: ["Rollout"]
+---
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sDeploymentMaxReplicas
+metadata:
+  name: deployment-max-five-replicas
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces: ["argocd", "gatekeeper-system", "kube-system", "monitoring", "argo-rollouts"]
+    kinds:
+      - apiGroups: ["apps"]
+        kinds: ["Deployment"]
+  parameters:
+    maxReplicas: 5
