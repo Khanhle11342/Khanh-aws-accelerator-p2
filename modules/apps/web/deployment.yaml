@@ -19,13 +19,6 @@ spec:
         - name: web
           image: docker.io/khanh15/web:25c9e79
           imagePullPolicy: IfNotPresent
-          securityContext:
-            runAsNonRoot: true
-            runAsUser: 1000
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop:
-                - ALL
           resources:
             requests:
               cpu: 50m
