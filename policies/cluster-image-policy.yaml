@@ -1,0 +1,13 @@
+apiVersion: policy.sigstore.dev/v1beta1
+kind: ClusterImagePolicy
+metadata:
+  name: require-signed-web-image
+spec:
+  images:
+    - glob: "docker.io/khanh15/web**"
+    - glob: "index.docker.io/khanh15/web**"
+  authorities:
+    - keyless:
+        identities:
+          - issuer: https://token.actions.githubusercontent.com
+            subjectRegExp: "^https://github.com/Khanhle11342/Khanh-aws-accelerator-p2/.github/workflows/ci-cd.yaml@refs/heads/main$"
