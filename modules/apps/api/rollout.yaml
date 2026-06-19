@@ -48,12 +48,4 @@ spec:
   strategy:
     canary:
       steps:
-        - setWeight: 25
-        - analysis:
-            templates:
-              - templateName: api-success-rate
-        - setWeight: 50
-        - analysis:
-            templates:
-              - templateName: api-success-rate
         - setWeight: 100
