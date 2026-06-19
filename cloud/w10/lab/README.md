@@ -1,17 +1,51 @@
-# Week 10 Lab - ESO + Trivy + Cosign
+# Week 10 Lab - GitOps Security
 
-Deliverable cho Lab 2:
+Deliverable cho Lab 1 + Lab 2:
 
 ```text
+rbac/                   # 3 role/clusterrole + 3 binding
+gatekeeper/constraints/ # 4 constraint + custom template
 eso/                    # SecretStore + ExternalSecret
 signing/                # ghi chu Cosign keyless, khong commit private key
 .github/workflows/      # CI: Trivy + Cosign
-argocd/apps/*.yaml      # App ESO + policy-controller + policies
+argocd/apps/*.yaml      # App rbac, gatekeeper, eso, policy-controller, policies
 policies/               # ClusterImagePolicy + label namespace demo
-runbooks/               # 2 runbook + 1 exception ADR
+runbooks/               # self-check runbooks + exception ADR
 ```
 
 ## Tu kiem
+
+### Lab 1 - RBAC
+
+```bash
+kubectl auth can-i create deploy -n demo --as alice
+kubectl auth can-i create deploy -n kube-system --as alice
+kubectl auth can-i get pods -A --as bob
+kubectl auth can-i delete nodes --as carol
+```
+
+Ky vong:
+
+- `alice` create deploy trong `demo`: `yes`
+- `alice` create deploy trong `kube-system`: `no`
+- `bob` get pods toan cum: `yes`
+- `carol` delete nodes: `no`
+
+### Lab 1 - Gatekeeper
+
+```bash
+kubectl get applications.argoproj.io -n argocd gatekeeper gatekeeper-constraints
+kubectl get constrainttemplates
+kubectl get constraints
+```
+
+Ky vong:
+
+- 4 manifest vi pham bi reject.
+- Pod hop le pass.
+- Platform W9 van `Synced/Healthy` sau khi bat enforce.
+
+### Lab 2 - ESO + Trivy + Cosign
 
 ```bash
 kubectl get applications.argoproj.io -n argocd
@@ -40,4 +74,3 @@ Repo nay dung Cosign keyless voi GitHub Actions OIDC:
 - Khong tao private key.
 - Khong commit private key.
 - `ClusterImagePolicy` verify identity cua workflow thay vi verify bang `cosign.pub`.
-
