@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: docker.io/khanh15/web:bf70a84
+          image: docker.io/khanh15/web:1fd0c5d
           imagePullPolicy: IfNotPresent
           resources:
             requests:
