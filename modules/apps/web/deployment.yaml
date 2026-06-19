@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: docker.io/khanh15/web:a441971
+          image: docker.io/khanh15/web:25c9e79
           imagePullPolicy: IfNotPresent
           securityContext:
             runAsNonRoot: true
